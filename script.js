@@ -28,13 +28,48 @@
 console.log("script running");
 
 // TODO: Fix this bug - should select #apple, not #banana!
-const appleButton = document.querySelector("#apple");
-const bananaButton = document.querySelector("#banana");
-const mangoButton = document.querySelector("#mango");
+let totalInCent = 0;
 
-console.log(appleButton);
-console.log(bananaButton);
-console.log(mangoButton);
+
+const appleButton = document.querySelector("#apple");
+const mangoButton = document.querySelector("#mango");
+const bananaButton = document.querySelector("#banana");
+
+
+const shoppingCart = document.querySelector("#shopping-cart");
+const totalSpan = document.querySelector("#total-span");
+
+
+const updateTotal = () => {
+    totalSpan.textContent = totalInCent / 100;
+}
+
+
+const addApple = () => {
+    shoppingCart.innerHTML += `<p> Apple </p>`;
+    totalInCent += 75;
+    updateTotal();
+}
+const addMango = () => {
+    shoppingCart.innerHTML += `<p> Mango </p>`;
+    totalInCent += 125;
+    updateTotal();
+}
+const addBanana = () => {
+    shoppingCart.innerHTML += `<p> Banana </p>`;
+    totalInCent += 30;
+    updateTotal();
+}
+
+
+// Event Listeners
+
+
+appleButton.addEventListener("click", addItem);
+mangoButton.addEventListener("click", addItem);
+bananaButton.addEventListener("click", addItem);
+
+
 
 // TODO: Rename this function to something more generic like "addItem"
 const addItem = () => {
@@ -42,6 +77,3 @@ const addItem = () => {
 };
 
 // TODO: Add event listeners for all three buttons
-appleButton.addEventListener("click", addItem);
-bananaButton.addEventListener("click", addItem);
-mangoButton.addEventListener("click", addItem);
